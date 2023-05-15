@@ -4,10 +4,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "Wilhelmus Duncker/Jonathan Padoa",
   "license": "ISC",
