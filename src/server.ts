@@ -1,12 +1,13 @@
 import express from "express";
 import env from "dotenv";
-import axios from "axios";
-import routes from "./routes/index.js";
+import calcRoutes from "./routes/index";
 
 env.config();
 
 const server = express();
 server.use(express.json());
+
+server.use("/api", calcRoutes);
 
 const PORT = process.env.PORT;
 server.listen(PORT, () => {
