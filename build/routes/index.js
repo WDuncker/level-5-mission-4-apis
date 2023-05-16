@@ -29,5 +29,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const calcController = __importStar(require("../controllers/calcController"));
 const router = express_1.default.Router();
+//End point for calculating premiums
 router.post("/calculate-premiums", calcController.calcPremiums);
 exports.default = router;
