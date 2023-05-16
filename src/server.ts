@@ -1,5 +1,5 @@
 import express from 'express'
-import carValue from './routes/index.js'
+import carValue from './routes/index'
 
 const server = express()
 server.use(express.json())
