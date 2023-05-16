@@ -1,15 +1,17 @@
-import carValue from '../services/calcServices'
-
-// carValue = (Total sum of value of each letter in model) + year
+// import carValue from '../services/calcServices'
+const carValue = require('../services/calcServices')
 
 //HappyDays Scenario
 
 test('Calculate car value with valid model and year', () => {
-  const model = 'Toyota Camry'
-  const year = '2018'
-  const expected = { carValue: 3059 }
+  //Arrange - as in arranging the inputs
+  const model = 'Mustang'
+  const year = '1969'
+  const expected = 11469
 
+  //Act - actual function call
   const result = calculateCarValue(model, year)
 
+  //Assert - I think in assertaining the actual expectations:)
   expect(result).toEqual(expected)
 })
