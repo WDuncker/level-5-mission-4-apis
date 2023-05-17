@@ -24,7 +24,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checkCarValue = void 0;
-const calcService = __importStar(require("../services/calcServices"));
+const calcService = __importStar(require("../services/calcServices.js"));
 const checkCarValue = (req, res) => {
     try {
         const model = req.body.model;
@@ -33,7 +33,19 @@ const checkCarValue = (req, res) => {
         res.json(theCarValue);
     }
     catch (error) {
-        res.send(`We are so sorry, there appears to be am error: ${error}`);
+        res.send(`We are so sorry, there appears to be an error: ${error}`);
     }
 };
 exports.checkCarValue = checkCarValue;
+// SAVING THE OLD JS WAY
+// import * as calcService from '../services/calcServices.js'
+// export const checkCarValue = (req, res) => {
+//   try {
+//     const model = req.body.model
+//     const year = req.body.year
+//     const theCarValue = calcService.calculateCarValue(model, year)
+//     res.json(theCarValue)
+//   } catch (error) {
+//     res.send(`We are so sorry, there appears to be am error: ${error}`)
+//   }
+// }

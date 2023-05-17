@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1684365654865" clover="3.2.0">
+  <project timestamp="1684365654865" name="All files">
+    <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3" elements="15" coveredelements="15" complexity="0" loc="8" ncloc="8" packages="1" files="1" classes="1"/>
+    <file name="calcServices.ts" path="C:\Users\jonop\OneDrive\Desktop\DESKTOP FOLDER\ASD\Missions\Mission3\M3API\mission-3-apisWRONG\src\services\calcServices.ts">
+      <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="10" count="5" type="cond" truecount="4" falsecount="0"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="14" count="4" type="stmt"/>
+      <line num="17" count="28" type="stmt"/>
+      <line num="18" count="22" type="stmt"/>
+      <line num="20" count="4" type="stmt"/>
+      <line num="22" count="4" type="stmt"/>
+    </file>
+  </project>
+</coverage>

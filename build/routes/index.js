@@ -27,7 +27,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const valueController = __importStar(require("../controller/valueController"));
+const valueController = __importStar(require("../controller/valueController.js"));
 const router = express_1.default.Router();
 router.post('/myCarValue', valueController.checkCarValue);
 exports.default = router;
+// SAVING THE OLD JS WAY
+// import express from 'express'
+// import * as valueController from '../controller/valueController.js'
+// const router = express.Router()
+// router.post('/myCarValue', valueController.checkCarValue)
+// export default router
