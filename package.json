@@ -2,10 +2,10 @@
   "name": "mission-3-apis",
   "description": "",
   "version": "1.0.0",
-  "main": "server.ts",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon build/server.js",
+    "start": "nodemon src/server.js",
     "build": "tsc",
     "test": "jest"
   },
