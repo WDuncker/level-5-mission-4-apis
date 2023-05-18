@@ -3,7 +3,7 @@ import { monthlyPremium } from "../services/calcService";
 
 //Sunny day scenario
 
-let yearly: number;
+let yearlyPrem: number;
 
 test("multiplies 3500 by 3 and divides by 100, provides answer 105", () => {
   //Arrange
@@ -12,17 +12,17 @@ test("multiplies 3500 by 3 and divides by 100, provides answer 105", () => {
   const expected = 105;
 
   //Act
-  yearly = yearlyPremium(input1, input2);
+  yearlyPrem = yearlyPremium(input1, input2);
 
   //Assert
-  expect(yearly).toBe(expected);
+  expect(yearlyPrem).toBe(expected);
 });
 
 test("divides yearlyPremium result (105) by 12 to give monthly premium (8.75", () => {
   const expected = 8.75;
 
   //Act
-  const actual = monthlyPremium(yearly);
+  const actual = monthlyPremium(yearlyPrem);
 
   //Assert
   expect(actual).toBe(expected);

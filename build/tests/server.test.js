@@ -3,21 +3,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const calcService_1 = require("../services/calcService");
 const calcService_2 = require("../services/calcService");
 //Sunny day scenario
-let yearly;
+let yearlyPrem;
 test("multiplies 3500 by 3 and divides by 100, provides answer 105", () => {
     //Arrange
     const input1 = 3500;
     const input2 = 3;
     const expected = 105;
     //Act
-    yearly = (0, calcService_1.yearlyPremium)(input1, input2);
+    yearlyPrem = (0, calcService_1.yearlyPremium)(input1, input2);
     //Assert
-    expect(yearly).toBe(expected);
+    expect(yearlyPrem).toBe(expected);
 });
 test("divides yearlyPremium result (105) by 12 to give monthly premium (8.75", () => {
     const expected = 8.75;
     //Act
-    const actual = (0, calcService_2.monthlyPremium)(yearly);
+    const actual = (0, calcService_2.monthlyPremium)(yearlyPrem);
     //Assert
     expect(actual).toBe(expected);
 });
