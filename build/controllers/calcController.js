@@ -22,15 +22,26 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const calcController = __importStar(require("../controllers/calcController"));
-const router = express_1.default.Router();
-//End point for calculating premiums
-router.post("/calculate-premiums", calcController.calcPremiums);
-router.post('/myCarValue', valueController.checkCarValue);
-exports.default = router;
-
+exports.calcPremiums = void 0;
+const calcService = __importStar(require("../services/calcService"));
+const calcPremiums = (req, res) => {
+    try {
+        //Defines the variables to be posted in the request
+        const { carValue, riskRating } = req.body;
+        //Calling both functions to process the variables sent in the request
+        const yearlyPremium = calcService.yearlyPremium(carValue, riskRating);
+        const monthlyPremium = calcService.monthlyPremium(yearlyPremium);
+        //Sets out what is to be returned when variables are poste to the API
+        const premiums = [
+            { type: "Yearly Premium", premium: yearlyPremium },
+            { type: "Monthly Premium", premium: monthlyPremium },
+        ];
+        //Calls the JSON array to be sent back
+        res.json(premiums);
+    }
+    catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+exports.calcPremiums = calcPremiums;
