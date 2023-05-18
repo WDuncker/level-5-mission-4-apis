@@ -5,7 +5,7 @@ interface CarValueResult {
 
 export const calculateCarValue = (
   model: string,
-  year: string
+  year: number
 ): CarValueResult => {
   if (!model || !year) {
     return { error: 'Model and year are required.' }
@@ -17,7 +17,7 @@ export const calculateCarValue = (
     .filter((letter) => /^[A-Z]+$/.test(letter))
     .reduce((acc, letter) => acc + (letter.charCodeAt(0) - 64) * 100, 0)
 
-  const carValue = modelValue + parseInt(year)
+  const carValue = modelValue + year
 
   return { carValue }
 }

@@ -1,12 +1,13 @@
 import express from 'express'
+import env from 'dotenv'
 import carValue from './routes/index'
 
-const server: express.Application = express()
+env.config()
+
+const server = express()
 server.use(express.json())
 
 server.use('/', carValue)
 
-const PORT = 4000
-server.listen(PORT, () => {
-  console.log(`******Server started on port 4000**********`)
-})
+const PORT = process.env.PORT
+server.listen(PORT, () => {})

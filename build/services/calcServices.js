@@ -10,7 +10,7 @@ const calculateCarValue = (model, year) => {
         .split('')
         .filter((letter) => /^[A-Z]+$/.test(letter))
         .reduce((acc, letter) => acc + (letter.charCodeAt(0) - 64) * 100, 0);
-    const carValue = modelValue + parseInt(year);
+    const carValue = modelValue + year;
     return { carValue };
 };
 exports.calculateCarValue = calculateCarValue;
