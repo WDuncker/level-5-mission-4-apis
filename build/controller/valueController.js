@@ -22,15 +22,30 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const calcController = __importStar(require("../controllers/calcController"));
-const valueController = __importStar(require("../controller/valueController.js"));
-const router = express_1.default.Router();
-//End point for calculating premiums
-router.post('/calculate-premiums', calcController.calcPremiums);
-router.post('/myCarValue', valueController.checkCarValue);
-exports.default = router;
+exports.checkCarValue = void 0;
+const calcService = __importStar(require("../services/calcServices.js"));
+const checkCarValue = (req, res) => {
+    try {
+        const model = req.body.model;
+        const year = req.body.year;
+        const theCarValue = calcService.calculateCarValue(model, year);
+        res.json(theCarValue);
+    }
+    catch (error) {
+        res.send(`We are so sorry, there appears to be an error: ${error}`);
+    }
+};
+exports.checkCarValue = checkCarValue;
+// SAVING THE OLD JS WAY
+// import * as calcService from '../services/calcServices.js'
+// export const checkCarValue = (req, res) => {
+//   try {
+//     const model = req.body.model
+//     const year = req.body.year
+//     const theCarValue = calcService.calculateCarValue(model, year)
+//     res.json(theCarValue)
+//   } catch (error) {
+//     res.send(`We are so sorry, there appears to be am error: ${error}`)
+//   }
+// }
