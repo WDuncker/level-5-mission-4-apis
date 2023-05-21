@@ -1,6 +1,6 @@
 import express, { Router } from 'express'
 import * as calcController from '../controllers/calcController'
-import * as valueController from '../controller/valueController.js'
+import * as valueController from '../controller/valueController'
 
 const router: Router = express.Router()
 
