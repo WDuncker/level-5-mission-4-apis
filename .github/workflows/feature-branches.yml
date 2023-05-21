@@ -2,7 +2,7 @@ name: Build and Test
 
 on:
   push:
-    branches: [feature/*]
+    branches: [wim_quote_branch]
 
 jobs:
   build_test:
