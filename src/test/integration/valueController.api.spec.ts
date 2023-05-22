@@ -17,7 +17,7 @@ describe('carValue API', () => {
     const res = await request(app).post('/api/myCarValue').send(input)
 
     // Assert
-    expect(res.status).toEqual(400)
+    expect(res.status).toEqual(200)
     expect(res.body).toEqual(expected)
   })
 })
