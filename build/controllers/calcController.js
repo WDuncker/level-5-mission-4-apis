@@ -34,8 +34,8 @@ const calcPremiums = (req, res) => {
         const monthlyPremium = calcService.monthlyPremium(yearlyPremium);
         //Sets out what is to be returned when variables are poste to the API
         const premiums = [
-            { type: "Yearly Premium", premium: yearlyPremium },
-            { type: "Monthly Premium", premium: monthlyPremium },
+            { type: 'Yearly Premium', premium: yearlyPremium },
+            { type: 'Monthly Premium', premium: monthlyPremium },
         ];
         //Calls the JSON array to be sent back
         res.json(premiums);
