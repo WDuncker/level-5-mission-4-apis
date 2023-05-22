@@ -10,7 +10,7 @@ test('multiplies 3500 by 3 and divides by 100, provides answer 105', () => {
   const expected = 105
 
   //Act
-  const yearlyPrem: number = yearlyPremium(input1, input2)
+  const yearlyPrem: number | null = yearlyPremium(input1, input2)
 
   //Assert
   expect(yearlyPrem).toBe(expected)
@@ -68,4 +68,30 @@ test('multiplies 5000 by 0 to throw an error', () => {
   expect(() => {
     yearlyPremium(input1, input2)
   }).toThrowError('Car value and risk rating must be greater than 0')
+})
+
+//No entry in car value field
+
+test('receives no car value input and throws an error', () => {
+  const input1 = null
+  const input2 = 3
+  expect(() => {
+    yearlyPremium(input1, input2)
+  }).toThrowError('You must enter a value in both fields')
+})
+
+test('receives no risk rating input and throws an error', () => {
+  const input1 = 4675
+  const input2 = null
+  expect(() => {
+    yearlyPremium(input1, input2)
+  }).toThrowError('You must enter a value in both fields')
+})
+
+test('receives input and throws an error', () => {
+  const input1 = null
+  const input2 = null
+  expect(() => {
+    yearlyPremium(input1, input2)
+  }).toThrowError('You must enter a value in both fields')
 })

@@ -2,6 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.monthlyPremium = exports.yearlyPremium = void 0;
 const yearlyPremium = (carValue, riskRating) => {
+    if (carValue === null || riskRating === null) {
+        throw new Error('You must enter a value in both fields');
+    }
     if (!(carValue > 0 && riskRating > 0)) {
         throw new Error('Car value and risk rating must be greater than 0');
     }

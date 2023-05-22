@@ -53,3 +53,25 @@ test('multiplies 5000 by 0 to throw an error', () => {
         (0, calcService_1.yearlyPremium)(input1, input2);
     }).toThrowError('Car value and risk rating must be greater than 0');
 });
+//No entry in car value field
+test('receives no car value input and throws an error', () => {
+    const input1 = null;
+    const input2 = 3;
+    expect(() => {
+        (0, calcService_1.yearlyPremium)(input1, input2);
+    }).toThrowError('You must enter a value in both fields');
+});
+test('receives no risk rating input and throws an error', () => {
+    const input1 = 4675;
+    const input2 = null;
+    expect(() => {
+        (0, calcService_1.yearlyPremium)(input1, input2);
+    }).toThrowError('You must enter a value in both fields');
+});
+test('receives input and throws an error', () => {
+    const input1 = null;
+    const input2 = null;
+    expect(() => {
+        (0, calcService_1.yearlyPremium)(input1, input2);
+    }).toThrowError('You must enter a value in both fields');
+});
