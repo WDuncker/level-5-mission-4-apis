@@ -1,24 +1,32 @@
-import { Request, Response } from "express";
-import * as calcService from "../services/calcService";
+import { Request, Response } from 'express'
+import * as calcService from '../services/calcService'
+
+enum premiumTypes {
+  yearly = 'Yearly Premium',
+  monthly = 'Monthly Premium',
+}
 
 export const calcPremiums = (req: Request, res: Response) => {
   try {
-    //Defines the variables to be posted in the request
-    const { carValue, riskRating } = req.body;
+    const { carValue, riskRating } = req.body
 
-    //Calling both functions to process the variables sent in the request
-    const yearlyPremium = calcService.yearlyPremium(carValue, riskRating);
-    const monthlyPremium = calcService.monthlyPremium(yearlyPremium);
+    if (carValue === '' || riskRating === '') {
+      throw new Error('You must fill in both fields')
+    }
+    if (!(carValue > 0 && riskRating > 0)) {
+      throw new Error('Car value and risk rating must be greater than 0')
+    }
 
-    //Sets out what is to be returned when variables are poste to the API
+    const yearlyPremium = calcService.yearlyPremium(carValue, riskRating)
+    const monthlyPremium = calcService.monthlyPremium(yearlyPremium)
+
     const premiums = [
-      { type: "Yearly Premium", premium: yearlyPremium },
-      { type: "Monthly Premium", premium: monthlyPremium },
-    ];
+      { type: premiumTypes.yearly, premium: yearlyPremium },
+      { type: premiumTypes.monthly, premium: monthlyPremium },
+    ]
 
-    //Calls the JSON array to be sent back
-    res.json(premiums);
+    res.json(premiums)
   } catch (error: any) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ error: error.message })
   }
-};
+}
