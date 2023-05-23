@@ -33,6 +33,12 @@ var premiumTypes;
 const calcPremiums = (req, res) => {
     try {
         const { carValue, riskRating } = req.body;
+        if (carValue === null || riskRating === null) {
+            throw new Error('You must enter a value in both fields');
+        }
+        if (!(carValue > 0 && riskRating > 0)) {
+            throw new Error('Car value and risk rating must be greater than 0');
+        }
         const yearlyPremium = calcService.yearlyPremium(carValue, riskRating);
         const monthlyPremium = calcService.monthlyPremium(yearlyPremium);
         const premiums = [
