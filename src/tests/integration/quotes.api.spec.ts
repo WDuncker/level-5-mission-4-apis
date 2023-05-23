@@ -29,11 +29,11 @@ describe('Quotes API', () => {
 
   test('it should return an error asking the user to enter inputs to both fields', async () => {
     const expected = {
-      error: 'You must enter a value in both fields',
+      error: 'You must fill in both fields',
     }
 
     const data = {
-      carValue: null,
+      carValue: '',
       riskRating: 5,
     }
 

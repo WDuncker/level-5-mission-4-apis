@@ -38,10 +38,10 @@ describe('Quotes API', () => {
     }));
     test('it should return an error asking the user to enter inputs to both fields', () => __awaiter(void 0, void 0, void 0, function* () {
         const expected = {
-            error: 'You must enter a value in both fields',
+            error: 'You must fill in both fields',
         };
         const data = {
-            carValue: null,
+            carValue: '',
             riskRating: 5,
         };
         const res = yield (0, supertest_1.default)(app_1.default).post('/api/calculate-premiums').send(data);
