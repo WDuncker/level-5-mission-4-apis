@@ -2,7 +2,7 @@ name: Build and Test
 
 on:
   pull_request:
-    branches: [m4-developpment-branch]
+    branches: [m4-development-branch]
 
 env:
   PROJECT_ID: missionpipelinetest # TODO: update Google Cloud project id
