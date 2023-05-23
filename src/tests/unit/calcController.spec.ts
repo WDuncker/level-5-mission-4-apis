@@ -52,7 +52,7 @@ describe('calcPremiums', () => {
     expect(JSON.parse(res._getData())).toEqual(expected)
   })
 
-  test('throws error for having no inputs', () => {
+  test('throws error for having one nil input', () => {
     const req = createRequest()
     const res = createResponse()
     const expected = {
@@ -61,6 +61,26 @@ describe('calcPremiums', () => {
 
     const data = {
       carValue: 5400,
+      riskRating: '',
+    }
+
+    req.body = data
+
+    calcPremiums(req, res)
+
+    expect(res.statusCode).toBe(400)
+    expect(JSON.parse(res._getData())).toEqual(expected)
+  })
+
+  test('throws error for having no inputs', () => {
+    const req = createRequest()
+    const res = createResponse()
+    const expected = {
+      error: 'You must fill in both fields',
+    }
+
+    const data = {
+      carValue: '',
       riskRating: '',
     }
 
