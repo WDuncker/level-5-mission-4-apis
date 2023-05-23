@@ -24,7 +24,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checkCarValue = void 0;
-const calcService = __importStar(require("../services/calcServices.js"));
+const calcService = __importStar(require("../services/calcServices"));
 const checkCarValue = (req, res) => {
     try {
         const model = req.body.model;

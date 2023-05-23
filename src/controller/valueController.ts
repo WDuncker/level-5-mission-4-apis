@@ -1,4 +1,4 @@
-import * as calcService from '../services/calcServices.js'
+import * as calcService from '../services/calcServices'
 import { Request, Response } from 'express'
 
 export const checkCarValue = (req: Request, res: Response): void => {

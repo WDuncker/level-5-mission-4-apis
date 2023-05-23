@@ -25,19 +25,26 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.calcPremiums = void 0;
 const calcService = __importStar(require("../services/calcService"));
+var premiumTypes;
+(function (premiumTypes) {
+    premiumTypes["yearly"] = "Yearly Premium";
+    premiumTypes["monthly"] = "Monthly Premium";
+})(premiumTypes || (premiumTypes = {}));
 const calcPremiums = (req, res) => {
     try {
-        //Defines the variables to be posted in the request
         const { carValue, riskRating } = req.body;
-        //Calling both functions to process the variables sent in the request
+        if (carValue === '' || riskRating === '') {
+            throw new Error('You must fill in both fields');
+        }
+        if (!(carValue > 0 && riskRating > 0)) {
+            throw new Error('Car value and risk rating must be greater than 0');
+        }
         const yearlyPremium = calcService.yearlyPremium(carValue, riskRating);
         const monthlyPremium = calcService.monthlyPremium(yearlyPremium);
-        //Sets out what is to be returned when variables are poste to the API
         const premiums = [
-            { type: "Yearly Premium", premium: yearlyPremium },
-            { type: "Monthly Premium", premium: monthlyPremium },
+            { type: premiumTypes.yearly, premium: yearlyPremium },
+            { type: premiumTypes.monthly, premium: monthlyPremium },
         ];
-        //Calls the JSON array to be sent back
         res.json(premiums);
     }
     catch (error) {
