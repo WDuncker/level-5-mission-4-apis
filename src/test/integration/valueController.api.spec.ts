@@ -20,4 +20,21 @@ describe('carValue API', () => {
     expect(res.status).toEqual(200)
     expect(res.body).toEqual(expected)
   })
+
+  test('Test should return an error asking for valid inputs', async () => {
+    // Arrange
+    const expected = { error: 'Model and year are required.' }
+
+    const input = {
+      model: '',
+      year: 1969,
+    }
+
+    // Act
+    const res = await request(app).post('/api/myCarValue').send(input)
+
+    // Assert
+    expect(res.status).toEqual(200)
+    expect(res.body).toEqual(expected)
+  })
 })

@@ -8,6 +8,8 @@ export const checkCarValue = (req: Request, res: Response): void => {
     const theCarValue = calcService.calculateCarValue(model, year)
     res.json(theCarValue)
   } catch (error) {
-    res.send(`We are so sorry, there appears to be an error: ${error}`)
+    res
+      .status(400)
+      .json(`We are so sorry, there appears to be an error: ${error}`)
   }
 }
