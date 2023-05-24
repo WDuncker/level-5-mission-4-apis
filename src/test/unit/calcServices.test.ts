@@ -1,6 +1,6 @@
 // const { calculateCarValue } = require('../services/calcServices')
 // TypeScript formatting below
-import { calculateCarValue } from '../services/calcServices'
+import { calculateCarValue } from '../../services/calcServices'
 
 // Sunny day scenario:
 

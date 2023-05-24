@@ -2,10 +2,7 @@ name: Build and Test
 
 on:
   push:
-    branches: [m4-development-branch]
-
-  pull_request:
-    branches: [m4-development-branch]
+    branches: [JPM4_carValue]
 
 jobs:
   build_test:
