@@ -1,13 +1,11 @@
 name: Build and Test
 
 on:
-  pull_request:
+  push:
     branches: [m4-development-branch]
 
-env:
-  PROJECT_ID: missionpipelinetest # TODO: update Google Cloud project id
-  SERVICE: pipeine-deployment-test # TODO: update Cloud Run service name
-  REGION: australia-southeast2 # TODO: update Cloud Run service region
+  pull_request:
+    branches: [m4-development-branch]
 
 jobs:
   build_test:
@@ -30,21 +28,3 @@ jobs:
 
       - name: Run Tests
         run: npm run test
-
-      - name: Google Auth
-        id: auth
-        uses: 'google-github-actions/auth@v0'
-        with:
-          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
-
-      - name: Deploy to Cloud Run
-        id: deploy
-        uses: google-github-actions/deploy-cloudrun@v0
-        with:
-          service: ${{ env.SERVICE }}
-          region: ${{ env.REGION }}
-          # NOTE: If required, update to the appropriate source folder
-          source: ./
-
-      - name: Show Output
-        run: echo ${{ steps.deploy.outputs.url }}
